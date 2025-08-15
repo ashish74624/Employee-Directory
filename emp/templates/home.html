@@ -1,5 +1,9 @@
-{% extends 'layout.html' %} {% block title %} Home {% endblock %}
- {% block content %}
-<h1>Home</h1>
-<p>Check out my <a href="/about">About</a> page.</p>
+{% extends 'layout.html' %} 
+{% block title %} Home {% endblock %} 
+{% block content %}
+  <section class="p-4 flex flex-col items-center justify-center">
+    <h1>Welcome to the Employee Directory</h1>
+    <p>This is a simple application to manage employee records.</p>
+    <a href="{% url 'employee_dir:list' %}" class="text-blue-400">View Employees</a>
+  </section>
 {% endblock %}

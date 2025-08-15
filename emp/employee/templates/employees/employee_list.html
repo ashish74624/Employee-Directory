@@ -1,18 +1,41 @@
 {% extends 'layout.html' %} {% block title %} Employees {% endblock %} 
 {% block content %}
-<section>
-  <h1>Employees</h1>
+<section class="p-8">
+  <h1>Employee List</h1>
 
-  {% for employee in employees %}
-  <article class="post">
-    <h2>
-      <a href="{%  url 'employee_dir:page' slug=employee.email %}">
-        {{ employee.first_name }} {{employee.last_name}}
-      </a>
-    </h2>
-    <p>{{ employee.email }}</p>
-  </article>
-  <a href="{% url 'employee_dir:create' %}">Create New</a>
-  {% endfor %}
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">First name</th>
+          <th scope="col" class="px-6 py-3">Last name</th>
+          <th scope="col" class="px-6 py-3">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr class="bg-white border-b border-gray-200">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+          >
+            {{ employee.first_name }}
+          </th>
+          <td class="px-6 py-4">{{ employee.last_name }}</td>
+          <td class="px-6 py-4">{{ employee.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <a href="{% url 'employee_dir:create' %}">
+    <button
+      type="button"
+      class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 my-2"
+    >
+      Create New
+    </button>
+  </a>
 </section>
 {% endblock %}
