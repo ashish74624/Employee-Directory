@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block title %} Employees {% endblock %} 
+{% block content %}
+<section>
+  <h1>Employees</h1>
+
+  {% for employee in employees %}
+  <article class="post">
+    <h2>
+      <a href="{%  url 'employee_dir:page' slug=employee.email %}">
+        {{ employee.first_name }} {{employee.last_name}}
+      </a>
+    </h2>
+    <p>{{ employee.email }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

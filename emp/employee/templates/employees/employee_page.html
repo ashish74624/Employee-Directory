@@ -1,0 +1,7 @@
+{% extends 'layout.html' %} {% block title %} {{ employee.first_name }}
+{{employee.last_name}} {% endblock %} {% block content %}
+<section>
+  <h1>{{ employee.first_name }} {{employee.last_name}}</h1>
+  <p>{{ employee.email }}</p>
+</section>
+{% endblock %}
