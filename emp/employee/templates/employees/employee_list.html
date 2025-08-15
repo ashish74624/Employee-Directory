@@ -12,6 +12,7 @@
     </h2>
     <p>{{ employee.email }}</p>
   </article>
+  <a href="{% url 'employee_dir:create' %}">Create New</a>
   {% endfor %}
 </section>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} {% block title %} Employee {% endblock %}
+ {% block content %}
+<section>
+  <h1>Employee Update</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Update</button>
+  </form>
+</section>
+{% endblock %}

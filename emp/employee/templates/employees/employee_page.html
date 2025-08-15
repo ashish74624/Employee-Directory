@@ -1,7 +1,13 @@
-{% extends 'layout.html' %} {% block title %} {{ employee.first_name }}
-{{employee.last_name}} {% endblock %} {% block content %}
+{% extends 'layout.html' %} 
+{% block title %}
+    {{ employee.first_name }} {{employee.last_name}} 
+{% endblock %}
+ 
+{% block content %}
 <section>
   <h1>{{ employee.first_name }} {{employee.last_name}}</h1>
   <p>{{ employee.email }}</p>
+  <a href="{% url 'employee_dir:update' slug=employee.email %}">Edit</a>
+  <a href="{% url 'employee_dir:delete' slug=employee.email %}">Delete</a>
 </section>
 {% endblock %}
