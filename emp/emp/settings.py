@@ -10,7 +10,8 @@ DEBUG = True
 CID_GENERATE = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,41 +91,25 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# settings.py (excerpt)
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,   # keep Django’s default loggers
-    'formatters': {
-        'verbose': {
-            'format': '[cid: %(cid)s] %(levelname)s %(asctime)s %(name)s %(message)s'
-        },
-        'simple': {
-            'format': '[cid: %(cid)s] %(levelname)s %(message)s'
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] "
+                      "[trace_id=%(otelTraceID)s span_id=%(otelSpanID)s sampled=%(otelTraceSampled)s] - %(message)s"
         },
     },
-    'filters': {
-        'correlation': {
-            '()': 'cid.log.CidContextFilter',
-        },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "default",
+        }
     },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-            'filters': ['correlation'],
-        },
-    },
-    'root': {   # this applies to all loggers by default
-        'handlers': ['console'],
-        'level': 'INFO',
-        'filters': ['correlation'],
-    },
-    'loggers': {
-        'django': {   # make sure Django’s own logs also get CID
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-            'filters': ['correlation'],
-        },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",  
     },
 }
+

@@ -1,2 +1,4 @@
 .venv
 .vs
+emp/emp/__pycache__
+emp/employee/__pycache__
