@@ -4,7 +4,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.instrumentation.django import DjangoInstrumentor
 from opentelemetry.instrumentation.logging import LoggingInstrumentor
 
-def configure_opentelemetry(service_name: str = "abc"):
+def configure_opentelemetry(service_name: str = "employee"):
     resource = Resource.create({"service.name": service_name})
 
     # Just set tracer provider — no exporter!

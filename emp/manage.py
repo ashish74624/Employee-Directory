@@ -15,7 +15,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    configure_opentelemetry(service_name="employee")
+    configure_opentelemetry(service_name="emp-service")
     execute_from_command_line(sys.argv)
 
 
